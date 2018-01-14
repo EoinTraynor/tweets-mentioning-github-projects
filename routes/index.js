@@ -6,7 +6,7 @@ let bearerToken = null;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {  
-  res.render('index', { title: 'Express' });
+  res.json({ title: 'Express' });
 });
 
 /* GET football search. */
@@ -93,7 +93,7 @@ router.get('/football', function(req, res, next) {
         projects[index].tweets = item.data.statuses;        
       });      
       console.log(projects[0].tweets.length);
-      res.render('index', { title: 'Express' });
+      res.json(projects);
     })    
   )      
   .catch(error => {
