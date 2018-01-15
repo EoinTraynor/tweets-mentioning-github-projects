@@ -10,8 +10,13 @@ This application searches for "Football" projects on GitHub, then, for each proj
 - Twitter API Application: 'TWITTER_CONSUMER_KEY' & 'TWITTER_CONSUMER_SECRET'
 
 ## Instructions
+Write your twitter api key and secret to local env
+```bash
+export TWITTER_CONSUMER_KEY=*your_twitter_consumer_key*
+export TWITTER_CONSUMER_SECRET=*your_twitter_consumer_secret*
+```
 
-
+Clone the repo
 ```bash
 git clone https://github.com/EoinTraynor/tweets-mentioning-github-projects.git && cd tweets-mentioning-github-projects
 ```
