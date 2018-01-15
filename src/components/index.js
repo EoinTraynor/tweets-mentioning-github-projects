@@ -55,7 +55,7 @@ class Project extends Component {
         }
         console.log(item);
         const tweets = item.tweets.map((tweet, index) => {
-            return <li className="list-group-item">{tweet.text}</li>
+            return <li key={index} className="list-group-item">{tweet.text}</li>
         });
         return(
             // <div className="project-item">

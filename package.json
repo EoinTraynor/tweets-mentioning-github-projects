@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "web": "webpack-dev-server"
+    "start": "node ./bin/www",
+    "web": "webpack-dev-server",
+    "app": "concurrent --kill-others \"npm start\" \"npm run web\""    
   },
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "~1.17.1",
-    "concurrently": "^3.5.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
@@ -26,6 +26,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.1",
     "css-loader": "^0.28.8",
     "nodemon": "^1.14.10",
     "path": "^0.12.7",

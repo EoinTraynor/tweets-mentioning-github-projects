@@ -21,15 +21,12 @@ Install dependencies
 npm i
 ```
 
-Run backend application
+Run application (front and backend)
 ```bash
-npm start
+npm run app
 ```
 
-Run react application (another terminal)
-```
-npm run web
-```
+Application runs on [localhost port 8080](http://localhost:8080/)
 
 ## Issues and Improvements
 - **Issue:** Searching GitHub projects for 'football' (11824 matches) returns multiple results of projects called football. Searching twitter by project 'name' (e.g. football) or alternatively 'full_name' (e.g. xiaoqiu206/football) does not return useful tweets or likely even not refer to the project itself.

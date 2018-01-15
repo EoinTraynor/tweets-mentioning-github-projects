@@ -29,9 +29,7 @@ router.get('/football', function(req, res, next) {
   /* TWITTER REQUEST*/  
   .then(response => {
     // store projects
-    projects = response.data.items;
-    // check for valid token for Twitter API query
-    if (!bearerToken) {
+    projects = response.data.items;    
       // get bearer token
       const consumerKey = process.env.TWITTER_CONSUMER_KEY;
       const consumerSecret = process.env.TWITTER_CONSUMER_SECRET;
@@ -46,8 +44,7 @@ router.get('/football', function(req, res, next) {
           "Authorization": "Basic " + credentials,
           "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
         }
-      })
-    }    
+      })     
   })
   // handle bearerToken
   // check twitter api for tweets mentioning the repo        
