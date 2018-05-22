@@ -27,13 +27,13 @@ router.get('/football', function(req, res, next) {
     }
   })
   /* TWITTER REQUEST*/  
-  .then(response => {
+  .then(response => {    
     // store projects
     projects = response.data.items;    
       // get bearer token
       const consumerKey = process.env.TWITTER_CONSUMER_KEY;
       const consumerSecret = process.env.TWITTER_CONSUMER_SECRET;
-      const cat = encodeURIComponent(consumerKey)+":"+encodeURIComponent(consumerSecret);
+      const cat = encodeURIComponent(consumerKey)+":"+encodeURIComponent(consumerSecret);      
       var credentials = new Buffer(cat).toString('base64');
 
       return axios({
@@ -56,8 +56,7 @@ router.get('/football', function(req, res, next) {
       // make requests to twitter  
       let projectPromises = [];
       if(projects.length > 0){      
-        projects.map((project, index) => {    
-          console.log(project.name);          
+        projects.map((project, index) => {       
           // push each request to an array
           projectPromises.push(
             axios({
@@ -88,12 +87,11 @@ router.get('/football', function(req, res, next) {
       args.map((item, index) => {
         // add array of tweets to each project
         projects[index].tweets = item.data.statuses;        
-      });      
-      console.log(projects[0].tweets.length);
+      });            
       res.json(projects);
     })    
   )      
-  .catch(error => {
+  .catch(error => {    
     console.log(error);
   });  
 });
