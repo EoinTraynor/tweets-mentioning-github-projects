@@ -36,8 +36,7 @@ export default class App extends Component {
             )
         });
         return(
-            <div className="container">
-            
+            <div className="container">            
                 <h1>Tweets mentioning the </h1>
                 <p>Most relevant GitHub projects matching 'football' along with tweets mentioning it (max 5).</p>
                 <div className="list-group">
