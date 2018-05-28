@@ -10,13 +10,14 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public')
+    contentBase: path.resolve(__dirname, 'src/public')
   },
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
       {test: /\.jsx$/, exclude: /node_modules/, loaders: ['babel-loader']},
-      {test: /(\.css)$/, loaders: ['style-loader', 'css-loader']}
+      {test: /(\.css)$/, loaders: ['style-loader', 'css-loader']},
+      {test: /(\.scss)$/, loaders: ['style-loader', 'css-loader', 'sass-loader']}
     ]
   }
 }

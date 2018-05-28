@@ -51,8 +51,7 @@ router.get('/football', function(req, res, next) {
   .then(response => {    
     if (response.data.token_type == 'bearer') {
       // set bearer token
-      bearerToken = response.data.access_token;
-      
+      bearerToken = response.data.access_token;      
       // make requests to twitter  
       let projectPromises = [];
       if(projects.length > 0){      
