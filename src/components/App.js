@@ -6,12 +6,22 @@ export default class App extends Component {
         super();
         this.state = {
             projects: [],
+            searchTerm: ''
         };
     }
 
+    handleSearchChange(e) {
+        this.setState({ searchTerm: e.target.value });
+    }
+    
+    handleSearchSubmit() {
+        const { searchTerm } = this.state;
+        this.searchForProject(searchTerm);
+    }
+
     // make request to the API
-    componentWillMount(){            
-        fetch('http://localhost:3000/football')
+    searchForProject(project) {
+        fetch(`http://localhost:3000/${project}`)
         .then(response => {
             if (!response.ok) {                 
                 throw Error(response.statusText);
@@ -26,8 +36,13 @@ export default class App extends Component {
         });
     }
 
+    componentWillMount(){            
+        this.searchForProject('react');    
+    }
+
     render () {
-        const projects = this.state.projects;
+        const { projects, searchTerm } = this.state;
+        // const searchTerm = this.state.searchTerm;
         let projectList = projects.map((item, index) => {
             return(                 
                 <div key={index}>
@@ -38,10 +53,14 @@ export default class App extends Component {
         return(
             <div className="container">            
                 <h1>Tweets mentioning the </h1>
-                <p>Most relevant GitHub projects matching 'football' along with tweets mentioning it (max 5).</p>
-                <div className="list-group">
-                    {projectList}
+                <p>Search for a Github repository with more than 5000 starts and see the most recent tweets relating to the project.</p>
+                <div className="form-group">
+                    <input className="form-control" type="text" placeholder="Search for Project" value={searchTerm} onChange={this.handleSearchChange.bind(this)}></input>
                 </div>
+                <button type="button" className="btn btn-primary" onClick={this.handleSearchSubmit.bind(this)}>Search</button>
+                {/* <div className="list-group">
+                    {projectList}
+                </div> */}
             </div>            
         )
     }

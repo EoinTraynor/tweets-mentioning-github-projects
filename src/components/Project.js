@@ -14,11 +14,16 @@ export default class Project extends Component {
             //     <li key={index}> {item.name} {item.description}</li>          
             // </div>
             <div className="card" style={cardStyle}>
-                <div className="card-block">
+                <div className="card-body">
                     <h4 className="card-title">{item.name}</h4>              
                     <p className="card-text">{item.description}</p>
-                    <a href={item.html_url} className="card-link">Project link</a>              
-                    {/* <a href={item.html_url} className="card-link">Show {item.tweets.length} matching tweets</a>               */}
+                    <a href={item.html_url} className="card-link">View Project</a>              
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item">Cras justo odio</li>
+                        <li className="list-group-item">Cras justo odio</li>
+                        <li className="list-group-item">Cras justo odio</li>
+                        <li className="list-group-item">Cras justo odio</li>                        
+                    </ul>
                 </div>
                 <ul className="list-group list-group-flush">
                     {tweets}
