@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Project from './Project'
+import axios from 'axios';
 
 export default class App extends Component {
     constructor(){
@@ -20,8 +21,14 @@ export default class App extends Component {
     }
 
     // make request to the API
-    searchForProject(project) {
-        fetch(`http://localhost:3000/${project}`)
+    searchForProject(project) {        
+        axios({
+            method: 'get',
+            url: `http://localhost:3000/search`,
+            params: {
+                project: project
+            }
+        })
         .then(response => {
             if (!response.ok) {                 
                 throw Error(response.statusText);

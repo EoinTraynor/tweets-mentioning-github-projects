@@ -9,8 +9,9 @@ router.get('/', function(req, res, next) {
   res.json({ title: 'Express' });
 });
 
-/* GET football search. */
-router.get('/football', function(req, res, next) {  
+/* GET search term. */
+router.get('/search', function(req, res, next) {    
+  const searchTerm = req.query.project;  
   let projects = null;
   /* GITHUB REQUEST*/
   // 11824 matching results for 'football'    
@@ -20,16 +21,16 @@ router.get('/football', function(req, res, next) {
   axios({
     method: 'get',
     url: 'https://api.github.com/search/repositories',
-    params: {
+   params: {
       // refine search by adding additional params            
-      q: 'football',
+      q: searchTerm,
       per_page: 10
     }
   })
   /* TWITTER REQUEST*/  
   .then(response => {    
     // store projects
-    projects = response.data.items;    
+    projects = response.data.items;
       // get bearer token
       const consumerKey = process.env.TWITTER_CONSUMER_KEY;
       const consumerSecret = process.env.TWITTER_CONSUMER_SECRET;
