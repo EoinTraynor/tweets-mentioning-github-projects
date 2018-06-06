@@ -7,7 +7,7 @@ export default class App extends Component {
         super();
         this.state = {
             projects: [],
-            searchTerm: ''
+            searchTerm: 'React'
         };
     }
 
@@ -42,12 +42,11 @@ export default class App extends Component {
     }
 
     componentWillMount(){            
-        this.searchForProject('react');    
+        this.searchForProject(this.state.searchTerm);    
     }
 
     render () {
-        const { projects, searchTerm } = this.state;
-        // const searchTerm = this.state.searchTerm;
+        const { projects, searchTerm } = this.state;                
         let projectList = projects.map((item, index) => {
             return(                 
                 <div key={index}>
@@ -56,17 +55,19 @@ export default class App extends Component {
             )
         });
         return(
-            <div className="container">            
-                <h1>Tweets mentioning the </h1>
-                <p>Search for a Github repository with more than 5000 starts and see the most recent tweets relating to the project.</p>
-                <div className="form-group">
-                    <input className="form-control" type="text" placeholder="Search for Project" value={searchTerm} onChange={this.handleSearchChange.bind(this)}></input>
-                </div>
-                <button type="button" className="btn btn-primary" onClick={this.handleSearchSubmit.bind(this)}>Search</button>
-                {/* <div className="list-group">
-                    {projectList}
-                </div> */}
-            </div>            
+            <section className="jumbotron text-center">
+                <div className="container">                        
+                    <h1 className="jumbotron-heading">Tweets mentioning '{searchTerm}'</h1>
+                    <p className="lead text-muted">Search for a Github repository and see the best match along with the most recent tweets relating to the project.</p>
+                    <div className="form-group">
+                        <input className="form-control" type="text" placeholder="Project Name" value={searchTerm} onChange={this.handleSearchChange.bind(this)}></input>
+                    </div>
+                    <button type="button" className="btn btn-primary" onClick={this.handleSearchSubmit.bind(this)}>Search for Project</button>
+                    {/* <div className="list-group">
+                        {projectList}
+                    </div> */}
+                </div>            
+            </section>
         )
     }
 }
