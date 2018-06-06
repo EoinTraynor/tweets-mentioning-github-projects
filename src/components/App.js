@@ -30,13 +30,11 @@ export default class App extends Component {
             }
         })
         .then(response => {
-            if (!response.ok) {                 
+            if (response.status !== 200) {                 
                 throw Error(response.statusText);
             }
-            return response.json();        
-        })
-        .then(data => {
-            this.setState({projects: data});            
+            console.log(response.data);
+            this.setState({projects: response.data});                        
         })
         .catch(function(error) {
             console.log('Looks like there was a problem: \n', error);
