@@ -55,19 +55,25 @@ export default class App extends Component {
             )
         });
         return(
-            <section className="jumbotron text-center">
-                <div className="container">                        
-                    <h1 className="jumbotron-heading">Tweets mentioning '{searchTerm}'</h1>
-                    <p className="lead text-muted">Search for a Github repository and see the best match along with the most recent tweets relating to the project.</p>
-                    <div className="form-group">
-                        <input className="form-control" type="text" placeholder="Project Name" value={searchTerm} onChange={this.handleSearchChange.bind(this)}></input>
+            <div>
+                <section className="jumbotron text-center">
+                    <div className="container">                        
+                        <h1 className="jumbotron-heading">Tweets mentioning '{searchTerm}'</h1>
+                        <p className="lead text-muted">Search for a Github repository and see the best match along with the most recent tweets relating to the project.</p>
+                        <div className="form-group">
+                            <input className="form-control" type="text" placeholder="Project Name" value={searchTerm} onChange={this.handleSearchChange.bind(this)}></input>
+                        </div>
+                        <button type="button" className="btn btn-primary" onClick={this.handleSearchSubmit.bind(this)}>Search for Project</button>
+                    </div>            
+                </section>                
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6">
+                            {projectList}
+                        </div>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={this.handleSearchSubmit.bind(this)}>Search for Project</button>
-                    {/* <div className="list-group">
-                        {projectList}
-                    </div> */}
-                </div>            
-            </section>
+                </div>                    
+            </div>
         )
     }
 }
