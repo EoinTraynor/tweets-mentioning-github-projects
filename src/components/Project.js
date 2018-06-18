@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Project extends Component {
   render() {
@@ -6,9 +7,9 @@ export default class Project extends Component {
 
     const capFirstLetter = (string) => {
       return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-    const tweets = item.tweets.map((tweet, index) => {
-      return <li key={index} className="list-group-item">{tweet.text}</li>
+    };
+    const tweets = item.tweets.map((tweet) => {
+      return <li className="list-group-item">{tweet.text}</li>;
     });
     return (
       <div key={index} className="project card">
@@ -21,7 +22,15 @@ export default class Project extends Component {
           <p className="card-text">{item.description}</p>
           <a href={item.html_url} className="card-link">Project Link</a>
         </div>
+        <ul className="list-group list-group-flush">
+          {tweets}
+        </ul>
       </div>
-    )
+    );
   }
 }
+
+Project.propTypes = {
+  index: PropTypes.number.isRequired,
+  item: PropTypes.arrayOf.isRequired,
+};
