@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Tweet from './Tweet';
 
 export default class Project extends Component {
   render() {
@@ -9,7 +10,7 @@ export default class Project extends Component {
       return string.charAt(0).toUpperCase() + string.slice(1);
     };
     const tweets = item.tweets.map((tweet) => {
-      return <li className="list-group-item">{tweet.text}</li>;
+      return <Tweet key={tweet.id} tweet={tweet} image={item.owner.avatar_url} />;
     });
     return (
       <div key={index} className="project card">
@@ -32,5 +33,5 @@ export default class Project extends Component {
 
 Project.propTypes = {
   index: PropTypes.number.isRequired,
-  item: PropTypes.arrayOf.isRequired,
+  item: PropTypes.object.isRequired,
 };

@@ -13,7 +13,6 @@ router.get('/', function (req, res, next) {
 /* GET search term. */
 router.get('/search', function (req, res, next) {
   const searchTerm = req.query.project;
-  console.log(searchTerm);
   let projects = null;
   /* GITHUB REQUEST*/
   // Default: results are sorted by best match
@@ -88,7 +87,6 @@ router.get('/search', function (req, res, next) {
         // loop through each of the completed promises
         args.map((item, index) => {
           // add array of tweets to each project
-          console.log(item.data);
           projects[index].tweets = item.data.statuses;
         });
         res.json(projects);

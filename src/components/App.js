@@ -34,7 +34,6 @@ export default class App extends Component {
         if (response.status !== 200) {
           throw Error(response.statusText);
         }
-        console.log(response.data);
         this.setState({ projects: response.data });
       })
       .catch((error) => {
@@ -63,17 +62,21 @@ export default class App extends Component {
       <div>
         <section className="jumbotron text-center">
           <div className="container">
-            <h1 className="jumbotron-heading">Tweets mentioning &quot;{searchTerm}&quot;</h1>
-            <p className="lead text-muted">Search for a Github repository and see the best match along with the most recent tweets relating to the project.</p>
-            <div className="form-group">
-              <input className="form-control" type="text" placeholder="Project Name" value={searchTerm} onChange={this.handleSearchChange} />
+            <div className="row justify-content-lg-center">
+              <div className="col-lg-6">
+                <h1 className="jumbotron-heading">Tweets mentioning &quot;{searchTerm}&quot;</h1>
+                <p className="lead text-muted">Search for a Github repository and see the best match along with the most recent tweets relating to the project.</p>
+                <div className="form-group">
+                  <input className="form-control" type="text" placeholder="Project Name" value={searchTerm} onChange={this.handleSearchChange} />
+                </div>
+                <button type="button" className="btn btn-primary" onClick={this.handleSearchSubmit}>Search for Project</button>
+              </div>
             </div>
-            <button type="button" className="btn btn-primary" onClick={this.handleSearchSubmit}>Search for Project</button>
           </div>
         </section>
         <div className="container">
-          <div className="row">
-            <div className="col-md-6">
+          <div className="row justify-content-lg-center">
+            <div className="col-lg-6">
               {projectList}
             </div>
           </div>
