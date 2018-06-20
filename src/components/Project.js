@@ -7,10 +7,11 @@ export default class Project extends Component {
     const { index, item } = this.props;
 
     const capFirstLetter = (string) => {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+      const capped = string.charAt(0).toUpperCase() + string.slice(1);
+      return capped;
     };
     const tweets = item.tweets.map((tweet) => {
-      return <Tweet key={tweet.id} tweet={tweet} image={item.owner.avatar_url} />;
+      return <Tweet key={tweet.id} tweet={tweet} />;
     });
     return (
       <div key={index} className="project card">
