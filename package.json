@@ -5,9 +5,12 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "web": "webpack-dev-server",
-    "app": "concurrently --kill-others \"npm start\" \"npm run web\""
+    "app": "concurrently --kill-others \"npm start\" \"npm run web\"",
+    "lint": "eslint ./src --ext .js"
   },
   "dependencies": {
+    "ajv": "^6.5.2",
+    "ajv-keywords": "^3.2.0",
     "axios": "^0.17.1",
     "body-parser": "~1.17.1",
     "bootstrap": "^4.1.1",
@@ -15,10 +18,13 @@
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "font-awesome": "^4.7.0",
+    "jquery": "^1.9.1",
     "morgan": "~1.8.1",
+    "popper.js": "^1.14.3",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-fontawesome": "^1.6.1",
     "react-router": "^4.2.0",
     "serve-favicon": "~2.4.2",
     "twitter": "^1.7.1"

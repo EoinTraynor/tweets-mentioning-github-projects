@@ -11,7 +11,12 @@ export default class Tweet extends Component {
       <div>
         <li className="list-group-item">
           <div className="tweet-header">
-            {/* <img className="card-img img-tumbnail float-left" src={tweet.user.profile_image_url} alt="Avatar Img" /> */}
+            {/*
+              <img
+                className="card-img img-tumbnail float-left"
+                src={tweet.user.profile_image_url}
+                alt="Avatar Img" />
+            */}
             <h4>{tweet.user.name}</h4>
           </div>
           <div className="tweet-body">

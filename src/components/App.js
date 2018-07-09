@@ -8,9 +8,9 @@ export default class App extends Component {
     this.state = {
       projects: [],
       searchTerm: 'React',
-      // flags: {
-      //   searchForProjectLoading: false,
-      // },
+      flags: {
+        searchForProjectLoading: false,
+      },
     };
   }
 
@@ -20,8 +20,7 @@ export default class App extends Component {
 
   // make request to the API
   searchForProject(project) {
-    // const { searchForProjectLoading } = this.state.flags;
-    this.searchForProjectLoading = true;
+    this.state.flags.searchForProjectLoading = true;
     axios({
       method: 'get',
       url: 'http://localhost:3000/search',
@@ -30,7 +29,7 @@ export default class App extends Component {
       },
     })
       .then((response) => {
-        this.searchForProjectLoading = false;
+        this.state.flags.searchForProjectLoading = false;
         if (response.status !== 200) {
           throw Error(response.statusText);
         }
@@ -50,7 +49,9 @@ export default class App extends Component {
     this.searchForProject(searchTerm);
   }
   render() {
-    const { projects, searchTerm } = this.state;
+    const { projects, searchTerm, flags } = this.state;
+    const { searchForProjectLoading } = flags;
+    const Loading = <div>Loading</div>;
     const projectList = projects.map((item, index) => {
       return (
         <div key={item.id}>
@@ -77,6 +78,9 @@ export default class App extends Component {
         <div className="container">
           <div className="row justify-content-lg-center">
             <div className="col-lg-6">
+              {searchForProjectLoading &&
+                Loading
+              }
               {projectList}
             </div>
           </div>
